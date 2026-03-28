@@ -1,3 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHARAWI // TERMINAL v1.0</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="terminal-overlay"></div>
+    
+    <header class="top-bar">
+        <div class="sys-info">
+            <span class="sys-box">SYS</span>
+            <div class="sys-text">
+                <strong>SHARAWI ACOSTA</strong>
+                <span>System Terminal v1.0</span>
+            </div>
+        </div>
+        <div class="location-bar">
+            📍 Zamboanga City <span class="temp">27°C</span>
+        </div>
+    </header>
+
     <main class="content">
         <section class="hero">
             <p class="cmd-line">> WHOAMI</p>
@@ -32,46 +57,38 @@
         <div class="modal-content">
             <div class="modal-header">
                 <span class="status-dot"></span>
-                <span>FILE: USER_BIO_EXTRACTED</span>
+                <span>ENCRYPTED_DATA_FILE // ACCESS_GRANTED</span>
                 <span class="close-btn">&times;</span>
             </div>
             <div class="modal-body">
                 <div class="profile-header">
                     <h2>SHARAWI ACOSTA</h2>
-                    <p class="id-tag">LOCATION: ZAMBOANGA CITY // SEC_LEVEL: ALPHA</p>
+                    <p class="id-tag">UID: #001 // SEC_LEVEL: ALPHA</p>
                 </div>
                 
                 <div class="info-grid">
+                    <div class="info-item">
+                        <label>FACEBOOK_LINK</label>
+                        <p><a href="https://www.facebook.com/sharawi.acosta.1" target="_blank">fb.me/sharawi.acosta.1</a></p>
+                    </div>
                     <div class="info-item">
                         <label>CONTACT_NUMBER</label>
                         <p>09947574965</p>
                     </div>
                     <div class="info-item">
-                        <label>SOCIAL_UPLINK</label>
-                        <p><a href="https://www.facebook.com/sharawi.acosta.1" target="_blank">facebook.com/sharawi.acosta.1</a></p>
-                    </div>
-                    <div class="info-item">
-                        <label>EDUCATIONAL_HISTORY</label>
-                        <div class="edu-timeline">
-                            <div class="edu-node">
-                                <strong>COLLEGE</strong>
-                                <p>ZPPSU - BSIT (Class of 2026)</p>
-                            </div>
-                            <div class="edu-node">
-                                <strong>SENIOR_HIGH</strong>
-                                <p>Baliwasan Senior High School</p>
-                            </div>
-                            <div class="edu-node">
-                                <strong>HIGH_SCHOOL</strong>
-                                <p>Zamboanga National High School West</p>
-                            </div>
-                            <div class="edu-node">
-                                <strong>ELEMENTARY</strong>
-                                <p>Santa Barbara Central School</p>
-                            </div>
-                        </div>
+                        <label>EDUCATIONAL_BACKGROUND</label>
+                        <ul class="edu-list">
+                            <li><strong>Current:</strong> Zamboanga Peninsula State University (BSIT)</li>
+                            <li><strong>Senior High:</strong> Baliwasan Senior High School</li>
+                            <li><strong>High School:</strong> Zamboanga National High School West</li>
+                            <li><strong>Elementary:</strong> Santa Barbara Central School</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
