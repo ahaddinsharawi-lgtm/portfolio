@@ -4,105 +4,195 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHARAWI // TERMINAL v1.0</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function(){
-            // Initializing with the dash found in your Account tab
-            emailjs.init("-YEaKD7zRlHrYbnyA");
+            emailjs.init("-YEaKD7zRlHrYbnyA"); // Verified Public Key
         })();
     </script>
+
+    <style>
+        /* --- CORE TERMINAL STYLES --- */
+        :root {
+            --neon-green: #00ff41;
+            --dark-bg: #050505;
+            --panel-bg: rgba(10, 10, 10, 0.9);
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Scanline Effect */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 9999;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        header { border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 20px; }
+        .sys-box { background: var(--neon-green); color: black; padding: 2px 6px; font-weight: bold; margin-right: 10px; }
+        
+        h1 { color: white; text-transform: uppercase; letter-spacing: 2px; margin: 10px 0; }
+        .mission { color: var(--neon-green); font-size: 0.9rem; }
+
+        /* Table & Forms */
+        .db-section { border: 1px solid #333; background: var(--panel-bg); margin-top: 20px; }
+        .db-header { background: #1a1a1a; padding: 5px 10px; font-size: 0.8rem; color: #888; }
+        
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #222; font-size: 0.8rem; }
+        th { color: #888; }
+
+        .btn-view {
+            background: transparent;
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+            padding: 5px 10px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.7rem;
+        }
+
+        .btn-view:hover { background: var(--neon-green); color: black; }
+
+        input, textarea {
+            width: 100%; background: transparent; border: 1px solid #444; 
+            color: white; padding: 8px; margin: 5px 0; box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        /* --- THE MODAL (RECORD VIEW) --- */
+        .modal {
+            display: none; /* Keeps it hidden until clicked */
+            position: fixed;
+            z-index: 10000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: #0a0a0a;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid var(--neon-green);
+            width: 80%;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .close-btn { position: absolute; right: 10px; top: 5px; color: white; cursor: pointer; font-size: 1.5rem; }
+    </style>
 </head>
 <body>
-    <div class="terminal-overlay"></div>
-    
-    <header class="top-bar">
-        <div class="sys-info">
-            <span class="sys-box">MyWeb</span>
-            <div class="sys-text">
-                <strong>SHARAWI ACOSTA</strong>
-                <span>PortFolio</span>
-            </div>
-        </div>
-        <div class="location-bar">
-            📍 Zamboanga City // 27°C
-        </div>
+
+    <header>
+        <span class="sys-box">MyWeb</span> <strong>SHARAWI ACOSTA</strong> Portfolio
+        <div style="float: right; font-size: 0.7rem; color: #555;">📍 Zamboanga City // 27°C</div>
     </header>
 
-    <main class="content">
-        <section class="hero">
-            <p class="cmd-line">> WHOAMI</p>
-            <h1 class="glitch-text">SHARAWI ACOSTA</h1>
-            
-            <div class="sub-text">
-                <p>Aspiring Cyber Security Specialist // Full-Stack Developer</p>
-                <p style="color: #00ff41; margin-top: 5px;">[!] MISSION: Defend Zamboanga's digital infrastructure.</p>
-            </div>
-            
-            <div class="database-section">
-                <div class="table-header"><span class="table-title">ACTIVE_SYSTEM_RECORDS...</span></div>
-                <table class="terminal-table">
-                    <thead>
-                        <tr><th>UID</th><th>DATA_TYPE</th><th>ACTION</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>#001</td>
-                            <td>PERSONAL_PROFILE_DATA</td>
-                            <td><button class="btn-view" id="openModal">VIEW_RECORD</button></td>
-                        </tr>
-                        <tr>
-                            <td>#002</td>
-                            <td>STUDENT_REGISTRATION_SYS</td>
-                            <td><a href="https://sharawiacosta.unaux.com/" target="_blank" class="btn-view" style="text-decoration:none;">View System</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    <main>
+        <p>> WHOAMI</p>
+        <h1>SHARAWI ACOSTA</h1>
+        <p>Aspiring Cyber Security Specialist // Full-Stack Developer</p>
+        <p class="mission">[!] MISSION: Defend Zamboanga's digital infrastructure.</p>
 
-            <div class="database-section" style="margin-top: 30px;">
-                <div class="table-header"><span class="table-title">ESTABLISH_SECURE_UPLINK...</span></div>
-                <form id="contact-form" style="padding: 20px; border: 1px solid #333; background: rgba(0,0,0,0.5); border-top: none;">
-                    <div style="margin-bottom: 12px;">
-                        <label style="color: #00ff41; font-size: 0.7rem;">> SENDER_ID:</label>
-                        <input type="text" name="from_name" placeholder="Name/Alias" required 
-                               style="background:transparent; border:1px solid #444; color:white; width:100%; padding:8px; font-family:'JetBrains Mono'; outline:none;">
-                    </div>
-                    <div style="margin-bottom: 12px;">
-                        <label style="color: #00ff41; font-size: 0.7rem;">> RETURN_SIGNAL_ADDR:</label>
-                        <input type="email" name="reply_to" placeholder="Your Email" required 
-                               style="background:transparent; border:1px solid #444; color:white; width:100%; padding:8px; font-family:'JetBrains Mono'; outline:none;">
-                    </div>
-                    <div style="margin-bottom: 12px;">
-                        <label style="color: #00ff41; font-size: 0.7rem;">> MESSAGE_PAYLOAD:</label>
-                        <textarea name="message" rows="3" placeholder="Enter message data..." required
-                                  style="background:transparent; border:1px solid #444; color:white; width:100%; padding:8px; font-family:'JetBrains Mono'; outline:none; resize:none;"></textarea>
-                    </div>
-                    <button type="submit" id="send-btn" class="btn-view" style="width: 100%; cursor: pointer; padding: 10px;">
-                        EXECUTE_SEND_PROTOCOL
-                    </button>
-                    <p id="form-status" style="margin-top: 10px; font-size: 0.7rem; text-align: center;"></p>
-                </form>
-            </div>
-        </section>
+        <div class="db-section">
+            <div class="db-header">ACTIVE_SYSTEM_RECORDS...</div>
+            <table>
+                <tr><th>UID</th><th>DATA_TYPE</th><th>ACTION</th></tr>
+                <tr>
+                    <td>#001</td>
+                    <td>PERSONAL_PROFILE_DATA</td>
+                    <td><button class="btn-view" id="openModal">VIEW_RECORD</button></td>
+                </tr>
+                <tr>
+                    <td>#002</td>
+                    <td>STUDENT_REGISTRATION_SYS</td>
+                    <td><a href="https://sharawiacosta.unaux.com/" target="_blank" class="btn-view">View System</a></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="db-section">
+            <div class="db-header">ESTABLISH_SECURE_UPLINK...</div>
+            <form id="contact-form" style="padding: 15px;">
+                <label style="color: var(--neon-green); font-size: 0.7rem;">> SENDER_NAME:</label>
+                <input type="text" name="from_name" required>
+                
+                <label style="color: var(--neon-green); font-size: 0.7rem;">> RETURN_SIGNAL_ADDR:</label>
+                <input type="email" name="reply_to" required>
+                
+                <label style="color: var(--neon-green); font-size: 0.7rem;">> MESSAGE_PAYLOAD:</label>
+                <textarea name="message" rows="3" required></textarea>
+                
+                <button type="submit" id="send-btn" class="btn-view" style="width:100%; margin-top:10px; padding: 10px;">EXECUTE_SEND_PROTOCOL</button>
+                <p id="form-status" style="font-size: 0.7rem; text-align: center; margin-top: 10px;"></p>
+            </form>
+        </div>
     </main>
 
     <div id="infoModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <span style="color: #00ff41;">ENCRYPTED_DATA_FILE // ACCESS_GRANTED</span>
-                <span class="close-btn">&times;</span>
-            </div>
-            <div class="modal-body">
-                <h2 style="color: #00ff41; margin-bottom: 10px;">SHARAWI ACOSTA</h2>
-                <p style="font-size: 0.8rem; margin-bottom: 15px;">UID: #001 // SEC_LEVEL: BSIT 2nd Year 2B</p>
-                
-                <label style="color: #00ff41; font-size: 0.7rem; display: block;">FACEBOOK_LINK</label>
-                <p><a href="https://fb.me/sharawi.acosta.1" target="_blank" style="color: white;">fb.me/sharawi.acosta.1</a></p>
-                
-                <label style="color: #00ff41; font-size: 0.7rem; display: block; margin-top: 10px;">CONTACT_NUMBER</label>
+            <span class="close-btn" id="closeModal">&times;</span>
+            <h3 style="color: var(--neon-green); margin-top: 0;">ACCESS_GRANTED</h3>
+            <p style="font-size: 0.8rem;">UID: #001 // SEC_LEVEL: BSIT 2nd Year 2B</p>
+            <hr style="border: 0; border-top: 1px solid #222;">
+            <p style="color: var(--neon-green); font-size: 0.6rem;">FACEBOOK_LINK</p>
+            <p style="font-size: 0.8rem;"><a href="https://fb.me/sharawi.acosta.1" style="color:white;">fb.me/sharawi.acosta.1</a></p>
+            <p style="color: var(--neon-green); font-size: 0.6rem;">CONTACT_NUMBER</p>
+            <p style="font-size: 0.8rem;">09947574965</p>
+        </div>
+    </div>
+
+    <script>
+        // MODAL LOGIC
+        const modal = document.getElementById("infoModal");
+        const openBtn = document.getElementById("openModal");
+        const closeBtn = document.getElementById("closeModal");
+
+        openBtn.onclick = () => modal.style.display = "block";
+        closeBtn.onclick = () => modal.style.display = "none";
+        window.onclick = (e) => { if(e.target == modal) modal.style.display = "none"; }
+
+        // EMAIL LOGIC
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const btn = document.getElementById('send-btn');
+            const status = document.getElementById('form-status');
+            
+            btn.innerText = "UPLOADING_PACKETS...";
+            btn.disabled = true;
+
+            // Updated IDs
+            emailjs.sendForm('service_9sg6fki', 'template_q0yz0tq', this)
+                .then(() => {
+                    btn.innerText = "PROTOCOL_COMPLETE";
+                    status.innerText = "SUCCESS: INBOX INFILTRATED";
+                    status.style.color = "#00ff41";
+                }, (err) => {
+                    btn.innerText = "PROTOCOL_FAILED";
+                    btn.disabled = false;
+                    status.innerText = "ERROR: " + err.text;
+                    status.style.color = "red";
+                });
+        });
+    </script>
+</body>
+</html>
                 <p>09947574965</p>
 
                 <label style="color: #00ff41; font-size: 0.7rem; display: block; margin-top: 10px;">EDUCATIONAL_BACKGROUND</label>
