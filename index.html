@@ -3,34 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Sharawi Acosta</title>
+    <title>Sharawi Acosta | Cyber Security & Dev</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav style="padding: 20px; font-weight: 800; font-size: 1.5rem;">EYBU</nav>
+    <header>
+        <div class="logo">SA.</div>
+        <nav>
+            <a href="#work">WORK</a>
+            <a href="#about">ABOUT</a>
+        </nav>
+    </header>
 
-    <main style="padding: 20px;">
-        <p style="color: #c0563d; font-size: 0.8rem; letter-spacing: 2px; font-weight: 600;">
-            BSIT STUDENT AT ZPPSU — CLASS OF 2026
-        </p>
-        <h1 style="font-size: 4rem; line-height: 0.9; margin: 10px 0;">
-            <span style="font-family: serif; font-style: italic; color: #c0563d;">Sharawi</span><br>
-            <span>Acosta</span>
-        </h1>
-        <p style="font-size: 1.1rem; color: #555; max-width: 400px; line-height: 1.5;">
-            Cyber security enthusiast & web developer crafting functional, secure systems and sharp visual identities from Zamboanga Peninsula.
-        </p>
-
-        <div style="display: flex; gap: 10px; margin-top: 30px;">
-            <a href="#about" style="background: #1a1a1a; color: white; padding: 15px 30px; text-decoration: none; font-weight: bold; flex: 1; text-align: center;">VIEW WORK</a>
-            <a href="mailto:your-email@example.com" style="border: 1px solid #1a1a1a; color: #1a1a1a; padding: 15px 30px; text-decoration: none; font-weight: bold; flex: 1; text-align: center;">GET IN TOUCH</a>
+    <section class="hero">
+        <div class="container">
+            <p class="tagline">BSIT STUDENT @ ZPPSU // CLASS OF 2026</p>
+            <h1 class="main-title">
+                <span class="italic">Sharawi</span><br>
+                <span class="bold">Acosta</span>
+            </h1>
+            <p class="bio">
+                Building secure digital foundations. Specialized in <strong>Cyber Security</strong> and functional <strong>PHP/MySQL</strong> systems from the Zamboanga Peninsula.
+            </p>
+            <div class="actions">
+                <a href="#work" class="btn-primary">VIEW PROJECTS</a>
+                <a href="mailto:your-email@example.com" class="btn-secondary">CONTACT</a>
+            </div>
         </div>
-    </main>
+    </section>
 
-    <section id="about" style="padding: 20px; margin-top: 50px;">
-        <p style="color: #c0563d; font-size: 0.7rem; font-weight: bold;">01 — ABOUT</p>
-        <hr style="border: 0; border-top: 1px solid #ddd;">
-        <p>I am a 21-year-old BSIT student specializing in Cyber Security and Web Development with PHP and MySQL.</p>
+    <section id="about" class="details">
+        <div class="container">
+            <span class="number">01 —</span>
+            <h2>SECURE BY DESIGN.</h2>
+            <p>21-year-old developer focused on the intersection of web architecture and defensive security. Currently refining Student Information Systems with a security-first mindset.</p>
+        </div>
     </section>
 
     <script src="script.js"></script>
