@@ -3,43 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sharawi Acosta | Cyber Security & Dev</title>
+    <title>SHARAWI // TERMINAL v1.0</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="logo">SA.</div>
-        <nav>
-            <a href="#work">WORK</a>
-            <a href="#about">ABOUT</a>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <div class="container">
-            <p class="tagline">BSIT STUDENT @ ZPPSU // CLASS OF 2026</p>
-            <h1 class="main-title">
-                <span class="italic">Sharawi</span><br>
-                <span class="bold">Acosta</span>
-            </h1>
-            <p class="bio">
-                Building secure digital foundations. Specialized in <strong>Cyber Security</strong> and functional <strong>PHP/MySQL</strong> systems from the Zamboanga Peninsula.
-            </p>
-            <div class="actions">
-                <a href="#work" class="btn-primary">VIEW PROJECTS</a>
-                <a href="mailto:your-email@example.com" class="btn-secondary">CONTACT</a>
+    <div class="terminal-overlay"></div>
+    
+    <header class="top-bar">
+        <div class="sys-info">
+            <span class="sys-box">SYS</span>
+            <div class="sys-text">
+                <strong>SHARAWI ACOSTA</strong>
+                <span>System Terminal v1.0</span>
             </div>
         </div>
-    </section>
-
-    <section id="about" class="details">
-        <div class="container">
-            <span class="number">01 —</span>
-            <h2>SECURE BY DESIGN.</h2>
-            <p>21-year-old developer focused on the intersection of web architecture and defensive security. Currently refining Student Information Systems with a security-first mindset.</p>
+        <div class="location-bar">
+            📍 Zamboanga City <span class="temp">27°C</span> // Cyber Security Student
         </div>
-    </section>
+    </header>
+
+    <main class="content">
+        <section class="hero">
+            <p class="cmd-line">> WHOAMI</p>
+            <h1 class="glitch-text">SHARAWI ACOSTA</h1>
+            <p class="sub-text">BSIT STUDENT AT ZPPSU — CLASS OF 2026</p>
+            
+            <div class="bio-block">
+                <p>Web developer & Cyber Security enthusiast crafting secure systems and digital identities.</p>
+            </div>
+
+            <div class="nav-grid">
+                <a href="#work" class="nav-card">
+                    <span class="card-title">+ VIEW PROJECTS</span>
+                    <span class="card-desc">Access secure database records</span>
+                </a>
+                <a href="mailto:contact@sharawi.com" class="nav-card">
+                    <span class="card-title">+ GET IN TOUCH</span>
+                    <span class="card-desc">Establish secure connection</span>
+                </a>
+            </div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
