@@ -10,7 +10,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function(){
-            // INITIALIZING WITH THE DASH FOUND IN YOUR ACCOUNT TAB
+            // Initializing with the dash found in your Account tab
             emailjs.init("-YEaKD7zRlHrYbnyA");
         })();
     </script>
@@ -80,29 +80,40 @@
                         <textarea name="message" rows="3" placeholder="Enter message data..." required
                                   style="background:transparent; border:1px solid #444; color:white; width:100%; padding:8px; font-family:'JetBrains Mono'; outline:none; resize:none;"></textarea>
                     </div>
-                    <button type="submit" id="send-btn" class="btn-view" style="width: 100%; cursor: pointer; padding: 10px; font-weight: bold;">
+                    <button type="submit" id="send-btn" class="btn-view" style="width: 100%; cursor: pointer; padding: 10px;">
                         EXECUTE_SEND_PROTOCOL
                     </button>
-                    <p id="form-status" style="margin-top: 10px; font-size: 0.7rem; text-align: center; font-family: 'JetBrains Mono';"></p>
+                    <p id="form-status" style="margin-top: 10px; font-size: 0.7rem; text-align: center;"></p>
                 </form>
             </div>
         </section>
     </main>
 
-    <div id="infoModal" class="modal" style="display:none;">
+    <div id="infoModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <span>ENCRYPTED_DATA_FILE // ACCESS_GRANTED</span>
-                <span class="close-btn" style="cursor:pointer;">&times;</span>
+                <span style="color: #00ff41;">ENCRYPTED_DATA_FILE // ACCESS_GRANTED</span>
+                <span class="close-btn">&times;</span>
             </div>
-            <div class="modal-body" style="padding:20px;">
-                <p>UID: #001 // BSIT 2nd Year 2B</p>
-                <p>Zamboanga Peninsula State University</p>
-                <p>FB: <a href="https://www.facebook.com/sharawi.acosta.1" target="_blank" style="color:white;">fb.me/sharawi.acosta.1</a></p>
+            <div class="modal-body">
+                <h2 style="color: #00ff41; margin-bottom: 10px;">SHARAWI ACOSTA</h2>
+                <p style="font-size: 0.8rem; margin-bottom: 15px;">UID: #001 // SEC_LEVEL: BSIT 2nd Year 2B</p>
+                
+                <label style="color: #00ff41; font-size: 0.7rem; display: block;">FACEBOOK_LINK</label>
+                <p><a href="https://fb.me/sharawi.acosta.1" target="_blank" style="color: white;">fb.me/sharawi.acosta.1</a></p>
+                
+                <label style="color: #00ff41; font-size: 0.7rem; display: block; margin-top: 10px;">CONTACT_NUMBER</label>
+                <p>09947574965</p>
+
+                <label style="color: #00ff41; font-size: 0.7rem; display: block; margin-top: 10px;">EDUCATIONAL_BACKGROUND</label>
+                <p style="font-size: 0.8rem;">ZPPSU (Current)<br>Baliwasan SHS<br>ZNHS West</p>
             </div>
         </div>
     </div>
 
+    <script src="script.js"></script>
+</body>
+</html>
     <script src="script.js"></script>
 </body>
 </html>
